@@ -1,8 +1,9 @@
 <template>
   <div>
     <h1>Hello VueDC July 2021!</h1>
-    <p>Count: {{ dataStore.count }}</p>
+    <p>Count: {{ currentCount }}</p>
     <button @click="increaseCount">Increment</button>
+    <p>Current Bbox: {{ newBbox }}</p>
     <h2>Earthquake</h2>
     <ul>
       <li v-for="(box, index) in earthquakeData.bbox" :key="`bbox-${index}`">
@@ -49,6 +50,14 @@ export default {
       dataStore,
       earthquakeData,
       increaseCount
+    }
+  },
+  computed: {
+    currentCount() {
+      return this.$store.state.counter.count
+    },
+    newBbox() {
+      return this.$store.state.earthquake.bbox
     }
   }
 }
